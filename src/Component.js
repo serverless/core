@@ -2,26 +2,16 @@ const path = require('path')
 const Context = require('./Context')
 const { fileExists } = require('./utils')
 
-/**
- * Component core class
- * @param {Object} config - Configuration
- * @param {Object} config.context - The Component context.
- * @param {String} config.root - The root path of the parent Component.
- * @param {String} config.stage - The stage you wish to set in the context.
- * @param {Object} config.credentials - The credentials you wish to set in the context.
- * @param {String} config.verbose - If you wish to see all outputs of child components.
- * @param {String} config.debug - If you wish to turn on debug mode.
- */
-
 class Component {
   constructor(id, context) {
     const name = id || this.constructor.name
-    const stage = context.stage || 'dev' // todo removed this.stage. any components using it?
-    this.id = id || `${stage}.${name}`
 
     if (!context || typeof context === 'object') {
       context = new Context(context)
     }
+
+    const stage = context.stage || 'dev' // todo removed this.stage. any components using it?
+    this.id = id || `${stage}.${name}`
 
     // we need to keep the entire instance in memory to pass it to child components
     this.context = {

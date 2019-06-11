@@ -1,6 +1,6 @@
 const path = require('path')
 const os = require('os')
-const { readFile, writeFile, fileExists } = require('./fs')
+const { readFile, writeFile, fileExists } = require('./utils')
 
 class Context {
   constructor(config = {}) {
@@ -40,4 +40,4 @@ class Context {
   }
 }
 
-module.exports = new Context()
+module.exports = Context
