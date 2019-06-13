@@ -6,16 +6,16 @@ class Component {
   constructor(id, context) {
     const name = id || this.constructor.name
 
-    if (!context || typeof context === 'object') {
+    if (!context || !context.readState) {
       context = new Context(context)
     }
 
-    const stage = context.stage || 'dev' // todo removed this.stage. any components using it?
-    this.id = id || `${stage}.${name}`
+    this.id = id || name
 
     // we need to keep the entire instance in memory to pass it to child components
     this.context = {
       instance: context,
+      credentials: context.credentials,
       outputs: context.outputs,
       status: (msg) => context.status(false, msg, name),
       log: (msg) => context.log(msg),
@@ -103,6 +103,11 @@ class Component {
         return
       }
       childComponentInstance.context.status = () => {
+        return
+      }
+
+      childComponentInstance.context.output = (key, value) => {
+        childComponentInstance.context.outputs[key] = value
         return
       }
     }

@@ -7,7 +7,6 @@ class Context {
     this.stateRoot = config.stateRoot
       ? path.resolve(config.stateRoot)
       : path.join(os.homedir(), '.serverless', 'components', 'state')
-    this.stage = config.stage || 'dev'
     this.credentials = config.credentials || {}
     this.outputs = {}
   }
