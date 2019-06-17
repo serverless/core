@@ -7,7 +7,6 @@ const { utils } = require('@serverless/core')
 
 const context = {
   stateRoot: 'path/to/state/dir', // default is ~/.serverless/components/state
-  stage: 'prod', // default is dev
   credentials : { aws: {} } // default is empty object
 }
 
