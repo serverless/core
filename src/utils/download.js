@@ -3,7 +3,7 @@ const path = require('path')
 const { ensureDir, remove } = require('fs-extra')
 const packageJson = require('package-json')
 const semver = require('semver')
-const BbPromise = require('bluebird')
+// const BbPromise = require('bluebird')
 const util = require('util')
 const exec = util.promisify(require('child_process').exec)
 const dirExists = require('./fs/dirExists')
@@ -78,7 +78,7 @@ async function download(componentsToDownload) {
 
   const componentsPathsMap = {}
 
-  await BbPromise.map(componentsToDownload, async (component) => {
+  const promises = componentsToDownload.map(async (component) => {
     const componentVersionToInstall = await getComponentVersionToDownload(component)
 
     const npmInstallPath = path.join(localRegistryPath, componentVersionToInstall.pair)
@@ -108,6 +108,8 @@ async function download(componentsToDownload) {
 
     componentsPathsMap[component] = requirePath
   })
+
+  await Promise.all(promises)
 
   return componentsPathsMap
 }
