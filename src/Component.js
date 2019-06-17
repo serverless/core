@@ -14,12 +14,7 @@ class Component {
 
     // we need to keep the entire instance in memory to pass it to child components
     this.context = {
-      instance: context,
-      credentials: context.credentials,
-      outputs: context.outputs,
-      status: (msg) => context.status(false, msg, name),
-      log: (msg) => context.log(msg),
-      output: (key, value) => context.output(key, value)
+      instance: context
     }
 
     // Set state
@@ -68,6 +63,13 @@ class Component {
   // so we can't auto populate state on instance construction
   async init() {
     this.state = await this.context.instance.readState(this.id)
+
+    this.context.resourceGroupId = this.context.instance.resourceGroupId
+    this.context.credentials = this.context.instance.credentials
+    this.context.outputs = this.context.instance.outputs
+    this.context.status = (msg) => this.context.instance.status(false, msg, this.id)
+    this.context.log = (msg) => this.context.instance.log(msg)
+    this.context.output = (key, value) => this.context.instance.output(key, value)
   }
 
   async save() {

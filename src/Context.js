@@ -8,15 +8,25 @@ class Context {
       ? path.resolve(config.stateRoot)
       : path.join(os.homedir(), '.serverless', 'components', 'state')
     this.credentials = config.credentials || {}
+    this.resourceGroupId = Math.random()
+      .toString(36)
+      .substring(6)
     this.outputs = {}
   }
 
   async readState(id) {
     const stateFilePath = path.join(this.stateRoot, `${id}.json`)
-    if (await fileExists(stateFilePath)) {
-      return readFile(stateFilePath)
+    let state = {
+      resourceGroupId: this.resourceGroupId
     }
-    return {}
+    if (await fileExists(stateFilePath)) {
+      state = await readFile(stateFilePath)
+      this.resourceGroupId = state.resourceGroupId
+    } else {
+      await this.writeState(id, state)
+    }
+
+    return state
   }
 
   async writeState(id, state) {
