@@ -19,7 +19,7 @@ class Context {
     let state = {
       resourceGroupId: this.resourceGroupId
     }
-    if (await fileExists(stateFilePath)) {
+    if ((await fileExists(stateFilePath)) && (await readFile(stateFilePath)).resourceGroupId) {
       state = await readFile(stateFilePath)
       this.resourceGroupId = state.resourceGroupId
     } else {
