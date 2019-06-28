@@ -3,9 +3,12 @@ const Context = require('./Context')
 const { fileExists } = require('./utils')
 
 class Component {
+  component = true
+
   constructor(id, context) {
     const name = id || this.constructor.name
 
+    // todo change this
     if (!context || !context.readState) {
       context = new Context(context)
     }
@@ -33,7 +36,7 @@ class Component {
       return that.default.call(that, inputs)
     }
 
-    // Add Component class properties like ui and state
+    // Add Component class properties like context and state
     Object.keys(this).forEach((prop) => {
       defaultFunction[prop] = this[prop]
     })
@@ -64,11 +67,15 @@ class Component {
   async init() {
     this.state = await this.context.instance.readState(this.id)
 
+    // the context object in the componnet instance is a subset
+    // of the actual context instance, to keep the component
+    // api clean, and be able to turn it off for child components
     this.context.resourceGroupId = this.context.instance.resourceGroupId
     this.context.credentials = this.context.instance.credentials
     this.context.outputs = this.context.instance.outputs
-    this.context.status = (msg) => this.context.instance.status(false, msg, this.id)
     this.context.log = (msg) => this.context.instance.log(msg)
+    this.context.debug = (msg) => this.context.instance.debug(msg)
+    this.context.status = (msg) => this.context.instance.status(msg, this.id)
     this.context.output = (key, value) => this.context.instance.output(key, value)
   }
 
@@ -99,22 +106,23 @@ class Component {
     // populate state based on the component id
     await childComponentInstance.init()
 
-    // If not verbose, replace outputs w/ empty function to silence child Components
-    if (!this.context.instance.verbose) {
-      childComponentInstance.context.log = () => {
-        return
-      }
-      childComponentInstance.context.status = () => {
-        return
-      }
-
-      childComponentInstance.context.output = (key, value) => {
-        childComponentInstance.context.outputs[key] = value
-        return
-      }
+    // silent logging for child components except for debug
+    childComponentInstance.context.log = () => {}
+    childComponentInstance.context.status = () => {}
+    childComponentInstance.context.output = (key, value) => {
+      childComponentInstance.context.outputs[key] = value
+      return
     }
 
     return childComponentInstance
+  }
+
+  // this static method helps identify this class
+  // as a component without having to initalize it
+  // useful for v1 core to determine if the serverless.js
+  // file is actually a component or not
+  static isComponent() {
+    return true
   }
 }
 

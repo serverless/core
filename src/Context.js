@@ -8,9 +8,16 @@ class Context {
       ? path.resolve(config.stateRoot)
       : path.join(os.homedir(), '.serverless', 'components', 'state')
     this.credentials = config.credentials || {}
+    this.debugMode = config.debug || false
+
+    // auto generate a resourceGroupId that would
+    // be shared for all components using this context instance
+    // could be overwritten below if exists in state
     this.resourceGroupId = Math.random()
       .toString(36)
       .substring(6)
+
+    // this object is used to save the context outputs in memory (aka. dispaly outputs)
     this.outputs = {}
   }
 
@@ -37,6 +44,15 @@ class Context {
 
   log() {
     return
+  }
+
+  // debug is useful and available even in programatic mode
+  debug(msg) {
+    if (!this.debugMode || !msg || msg == '') {
+      return
+    }
+
+    console.log(`  DEBUG: ${msg}`) // eslint-disable-line
   }
 
   status() {
