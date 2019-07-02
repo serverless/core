@@ -16,9 +16,6 @@ class Context {
     this.resourceGroupId = Math.random()
       .toString(36)
       .substring(6)
-
-    // this object is used to save the context outputs in memory (aka. dispaly outputs)
-    this.outputs = {}
   }
 
   async readState(id) {
@@ -56,11 +53,6 @@ class Context {
   }
 
   status() {
-    return
-  }
-
-  output(key, value) {
-    this.outputs[key] = value
     return
   }
 }

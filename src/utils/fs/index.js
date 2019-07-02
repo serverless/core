@@ -6,6 +6,7 @@ const fileExists = require('./fileExists')
 const dirExists = require('./dirExists')
 const parseFile = require('./parseFile')
 const readFile = require('./readFile')
+const readFileSync = require('./readFileSync')
 const readFileIfExists = require('./readFileIfExists')
 const writeFile = require('./writeFile')
 const hashFile = require('./hashFile')
@@ -22,6 +23,7 @@ module.exports = {
   dirExists,
   writeFile,
   readFile,
+  readFileSync,
   readFileIfExists,
   hashFile,
   walkDirSync,

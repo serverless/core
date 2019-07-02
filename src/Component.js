@@ -72,11 +72,12 @@ class Component {
     // api clean, and be able to turn it off for child components
     this.context.resourceGroupId = this.context.instance.resourceGroupId
     this.context.credentials = this.context.instance.credentials
-    this.context.outputs = this.context.instance.outputs
     this.context.log = (msg) => this.context.instance.log(msg)
     this.context.debug = (msg) => this.context.instance.debug(msg)
-    this.context.status = (msg) => this.context.instance.status(msg, this.id)
-    this.context.output = (key, value) => this.context.instance.output(key, value)
+    this.context.status = (msg, entity) => this.context.instance.status(msg, entity || this.id)
+
+    // todo remove later when we update components
+    this.context.output = () => {}
   }
 
   async save() {
@@ -109,10 +110,6 @@ class Component {
     // silent logging for child components except for debug
     childComponentInstance.context.log = () => {}
     childComponentInstance.context.status = () => {}
-    childComponentInstance.context.output = (key, value) => {
-      childComponentInstance.context.outputs[key] = value
-      return
-    }
 
     return childComponentInstance
   }
