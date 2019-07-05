@@ -1,6 +1,6 @@
 {
   "name": "@serverless/core",
-  "version": "0.1.15",
+  "version": "0.1.22",
   "description": "Serverless Components Core",
   "main": "./src/index.js",
   "publishConfig": {

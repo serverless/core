@@ -6,14 +6,16 @@ class Component {
   component = true
 
   constructor(id, context) {
-    const name = id || this.constructor.name
+    this.id = id || this.constructor.name
+
+    if (this.id === 'Context') {
+      throw Error('You cannot use "Context" as a component name. It is reserved.')
+    }
 
     // todo change this
     if (!context || !context.readState) {
       context = new Context(context)
     }
-
-    this.id = id || name
 
     // we need to keep the entire instance in memory to pass it to child components
     this.context = {
@@ -29,7 +31,7 @@ class Component {
 
     // make sure author defined at least a default function
     if (typeof that.default !== 'function') {
-      throw Error(`default function is missing for component "${name}"`)
+      throw Error(`default function is missing for component "${this.id}"`)
     }
 
     const defaultFunction = function(inputs) {
@@ -65,6 +67,8 @@ class Component {
   // and we can't run async operations in the constructor
   // so we can't auto populate state on instance construction
   async init() {
+    await this.context.instance.init()
+
     this.state = await this.context.instance.readState(this.id)
 
     // the context object in the componnet instance is a subset
@@ -72,6 +76,7 @@ class Component {
     // api clean, and be able to turn it off for child components
     this.context.resourceGroupId = this.context.instance.resourceGroupId
     this.context.credentials = this.context.instance.credentials
+    this.context.resourceId = () => this.context.instance.resourceId()
     this.context.log = (msg) => this.context.instance.log(msg)
     this.context.debug = (msg) => this.context.instance.debug(msg)
     this.context.status = (msg, entity) => this.context.instance.status(msg, entity || this.id)
@@ -112,14 +117,6 @@ class Component {
     childComponentInstance.context.status = () => {}
 
     return childComponentInstance
-  }
-
-  // this static method helps identify this class
-  // as a component without having to initalize it
-  // useful for v1 core to determine if the serverless.js
-  // file is actually a component or not
-  static isComponent() {
-    return true
   }
 }
 

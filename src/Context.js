@@ -1,6 +1,6 @@
 const path = require('path')
 const os = require('os')
-const { readFile, writeFile, fileExists } = require('./utils')
+const { readFile, writeFile, fileExists, randomId } = require('./utils')
 
 class Context {
   constructor(config = {}) {
@@ -9,28 +9,32 @@ class Context {
       : path.join(os.homedir(), '.serverless', 'components', 'state')
     this.credentials = config.credentials || {}
     this.debugMode = config.debug || false
+    this.state = { id: randomId() }
+    this.id = this.state.id
+  }
 
-    // auto generate a resourceGroupId that would
-    // be shared for all components using this context instance
-    // could be overwritten below if exists in state
-    this.resourceGroupId = Math.random()
-      .toString(36)
-      .substring(6)
+  async init() {
+    // todo what if theres a component called Context?!
+    const contextStatePath = path.join(this.stateRoot, `Context.json`)
+
+    if (await fileExists(contextStatePath)) {
+      this.state = await readFile(contextStatePath)
+    } else {
+      await writeFile(contextStatePath, this.state)
+    }
+    this.id = this.state.id
+  }
+
+  resourceId() {
+    return `${this.id}-${randomId()}`
   }
 
   async readState(id) {
     const stateFilePath = path.join(this.stateRoot, `${id}.json`)
-    let state = {
-      resourceGroupId: this.resourceGroupId
+    if (await fileExists(stateFilePath)) {
+      return readFile(stateFilePath)
     }
-    if ((await fileExists(stateFilePath)) && (await readFile(stateFilePath)).resourceGroupId) {
-      state = await readFile(stateFilePath)
-      this.resourceGroupId = state.resourceGroupId
-    } else {
-      await this.writeState(id, state)
-    }
-
-    return state
+    return {}
   }
 
   async writeState(id, state) {

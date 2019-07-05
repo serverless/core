@@ -2,12 +2,12 @@ const fs = require('./fs')
 const load = require('./load')
 const download = require('./download')
 const sleep = require('./sleep')
-const generateResourceName = require('./generateResourceName')
+const randomId = require('./randomId')
 
 module.exports = {
   ...fs,
   load,
   download,
   sleep,
-  generateResourceName
+  randomId
 }
