@@ -80,7 +80,7 @@ class Component {
     this.context.log = (msg) => this.context.instance.log(msg)
     this.context.debug = (msg) => this.context.instance.debug(msg)
     this.context.status = (msg, entity) => this.context.instance.status(msg, entity || this.id)
-    this.context.output = (key,val) => this.context.instance.output(key, val)
+    this.context.output = (key, val) => this.context.instance.output(key, val)
   }
 
   async save() {
