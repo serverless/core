@@ -110,9 +110,10 @@ class Component {
     // populate state based on the component id
     await childComponentInstance.init()
 
-    // silent logging for child components except for debug
+    // disable context methods for child components
     childComponentInstance.context.log = () => {}
     childComponentInstance.context.status = () => {}
+    childComponentInstance.context.output = () => {}
 
     return childComponentInstance
   }
