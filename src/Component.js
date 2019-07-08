@@ -3,8 +3,6 @@ const Context = require('./Context')
 const { fileExists } = require('./utils')
 
 class Component {
-  component = true
-
   constructor(id, context) {
     this.id = id || this.constructor.name
 
