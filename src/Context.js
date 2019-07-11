@@ -14,8 +14,7 @@ class Context {
   }
 
   async init() {
-    // todo what if theres a component called Context?!
-    const contextStatePath = path.join(this.stateRoot, `Context.json`)
+    const contextStatePath = path.join(this.stateRoot, `_.json`)
 
     if (await fileExists(contextStatePath)) {
       this.state = await readFile(contextStatePath)
