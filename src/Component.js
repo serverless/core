@@ -72,13 +72,19 @@ class Component {
     // the context object in the componnet instance is a subset
     // of the actual context instance, to keep the component
     // api clean, and be able to turn it off for child components
-    this.context.resourceGroupId = this.context.instance.resourceGroupId
     this.context.credentials = this.context.instance.credentials
     this.context.resourceId = () => this.context.instance.resourceId()
     this.context.log = (msg) => this.context.instance.log(msg)
     this.context.debug = (msg) => this.context.instance.debug(msg)
     this.context.status = (msg, entity) => this.context.instance.status(msg, entity || this.id)
-    this.context.output = (key, val) => this.context.instance.output(key, val)
+
+    // keeping this function for a while
+    this.context.output = (key, val) => {
+      if (typeof this.context.instance.output === 'function') {
+        return this.context.instance.output(key, val)
+      }
+      return
+    }
   }
 
   async save() {
