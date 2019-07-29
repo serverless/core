@@ -40,7 +40,7 @@ website:
   
 #### Composition
 
-Serverless Components are easy to compose.  You can compose them YAML (serverless.yml) or programatically (serverless.js).
+Serverless Components are easy to compose.  You can compose them declaratively via YAML (**serverless.yml**) or programatically via javascript (**serverless.js**).
 
 ```javascript
 // serverless.js
@@ -54,6 +54,7 @@ MyComponent extends Component {
     return outputs
   }
 }
+```
 
 #### Serverless
 * **Fast Deployments**
