@@ -42,21 +42,6 @@ website:
 
 Serverless Components are easy to compose.  You can compose them declaratively via YAML (**serverless.yml**) or programatically via javascript (**serverless.js**).
 
-```javascript
-// serverless.js
-
-MyComponent extends Component {
-  async default() {
-    const website = await this.load('@serverless/website') // Load a component
-    const outputs = await website({ code: { src: './src' } }) // Deploy it
-    this.state.url = outputs.url
-    await this.save()
-    return outputs
-  }
-}
-```
-
-
 ```yaml
 # serverless.yml
 
@@ -75,6 +60,20 @@ website:
       src: ./src
     env:
       api: ${backend.url} # An output from "backend" to make available in the website
+```
+
+```javascript
+// serverless.js
+
+MyComponent extends Component {
+  async default() {
+    const website = await this.load('@serverless/website') // Load a component
+    const outputs = await website({ code: { src: './src' } }) // Deploy it
+    this.state.url = outputs.url
+    await this.save()
+    return outputs
+  }
+}
 ```
 
 #### Serverless
