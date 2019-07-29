@@ -6,7 +6,7 @@ Serverless Components provision and compose cloud services into higher-level abs
 
 <br/>
 
-**Updates** ⚡️ <a href="https://github.com/serverless/components/releases/tag/0.1.22">v0.1.22 has been released</a> - Includes the function & api provider agnostic components.
+<h4 align="center">**Updates** ⚡️ <a href="https://github.com/serverless/components/releases/tag/0.1.22">v0.1.22 has been released</a> - Includes the function & api provider agnostic components.</h4>
 
 <br/>
 
