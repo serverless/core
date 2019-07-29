@@ -49,15 +49,13 @@ backend:
   component: @serverless/backend
   inputs:
     code:
-      src: ./src
-     env:
-       dbName: ${database.name}
+      src: ./backend
 
 website:
   component: @serverless/website
   inputs:
     code:
-      src: ./src
+      src: ./frontend
     env:
       api: ${backend.url} # An output from "backend" to make available in the website
 ```
