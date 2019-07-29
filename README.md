@@ -56,6 +56,27 @@ MyComponent extends Component {
 }
 ```
 
+
+```yaml
+# serverless.yml
+
+backend:
+  component: @serverless/backend
+  inputs:
+    code:
+      src: ./src
+     env:
+       dbName: ${database.name}
+
+website:
+  component: @serverless/website
+  inputs:
+    code:
+      src: ./src
+    env:
+      api: ${backend.url} # An output from "backend" to make available in the website
+```
+
 #### Serverless
 * **Fast Deployments**
 * **Vanilla Javascript**
