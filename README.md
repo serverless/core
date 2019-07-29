@@ -75,8 +75,16 @@ MyComponent extends Component {
 ```
 
 #### Serverless
-* **Fast Deployments**
-* **Vanilla Javascript**
+
+Serverless Components favor cloud services with serverless qualities (shocker!), like AWS Lambda, AWS S3, Twilio, Stripe, Algolia, Cloudflare Workers and more.
+
+#### Fast Deployments
+
+Most Serverless Componetns deploy 10x faster than traditional cloud provisioning tools.  One of Serverless Components' goals is to deploy near instantly, removing the need to emulate clodu services locally.
+
+#### Vanilla Javascript
+
+Serverless Components are written in vanilla javascript and seek to use the least amount of dependencies and fads, enabling ease of understanding by both beginning and fatigued javascript practioners.
 
 # Getting Started
 
