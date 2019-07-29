@@ -30,7 +30,7 @@ Install the [Serverless Framework](https://www.github.com/serverless/serverless)
 $ npm i -g serverless
 ```
 
-Serverless Components can be added to the Serverless Framework's configuration file `serverless.yml`, like this:
+You can use Serverless Components declaratively via the Framework's `serverless.yml` file like this:
 
 ```yaml
 name: my-app
