@@ -1,6 +1,6 @@
 **Updates** ⚡️ <a href="https://github.com/serverless/components/releases/tag/0.1.22">v0.1.22 has been released</a> - Includes the function & api provider agnostic components.
 
-[![Serverless Components (beta)](https://s3.amazonaws.com/assets.github.serverless/components/serverless-components-readme-2.gif)](http://serverless.com)
+![Serverless Components - Beta](https://s3.amazonaws.com/assets.github.serverless/components/serverless-components-readme-2.gif)
 
 <br/><br/>
 
