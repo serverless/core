@@ -20,6 +20,8 @@ You can use them with the [Serverless Framework](https://www.github.com/serverle
 - [Join Us on Slack](https://serverless.com/slack)
 - [Roadmap](https://github.com/serverless/components/projects/1)
 
+<br/>
+
 # Getting Started
 
 Install the [Serverless Framework](https://www.github.com/serverless/serverless).
