@@ -4,8 +4,6 @@
 
 Serverless Components provision and compose cloud services into higher-level abstractions, like features and applications.   You can use them with the [Serverless Framework](https://www.github.com/serverless/serverless).
 
-Serverless Components can be created by anyone.  Serverless Inc. currently makes and maintains several [which you can find here](https://www.github.com/serverless-components).
-
 **Updates** ⚡️ <a href="https://github.com/serverless/components/releases/tag/0.1.22">v0.1.22 has been released</a> - Includes the function & api provider agnostic components.
 
 <br/>
