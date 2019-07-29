@@ -85,7 +85,7 @@ Most Serverless Componetns deploy 10x faster than traditional cloud provisioning
 
 #### Vanilla Javascript
 
-Serverless Components are written in vanilla javascript and seek to use the least amount of dependencies and fads, enabling ease of understanding by both beginning and fatigued javascript practioners.
+Serverless Components are written in vanilla javascript and seek to use the least amount of dependencies and fads, enabling ease of understanding by both beginning and fatigued javascripters.
 
 # Getting Started
 
