@@ -14,8 +14,8 @@ You can use them via the [Serverless Framework](https://www.github.com/serverles
 
 - [Features](#features)
 - [Getting Started](#getting-started)
-- [Declarative Usage (`serverless.yml`)](#declarative-usage)
-- [Programatic Usage (`serverless.js`)](#programatic-usage)
+- [Declarative Usage (serverless.yml)](#declarative-usage)
+- [Programatic Usage (serverless.js)](#programatic-usage)
 - [Components Registry](https://github.com/serverless-components/)
 - [Example Templates](./templates)
 - [Join Us on Slack](https://serverless.com/slack)
