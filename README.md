@@ -6,54 +6,45 @@ Serverless Components provision and compose cloud services into higher-level abs
 
 <br/>
 
-**Updates** ⚡️ <a href="https://github.com/serverless/components/releases/tag/0.1.22">v0.1.22 has been released</a> - Includes the function & api provider agnostic components.</h4>
+**Updates** ⚡️ <a href="https://github.com/serverless/components/releases/tag/0.1.22">v0.1.22 has been released</a> - Includes the function & api provider agnostic components.
 
 <br/>
 
 ## Using Serverless Components
 
-Use Serverless Components with the Serverless Framework via `serverless.yml`:
+Use Serverless Components with the Serverless Framework declaratively via `serverless.yml`:
 
 ```yaml
-# serverless.yml
-
-name: fullstack-app
-
-backend:
-  component: '@serverless/backend@2.0.0'
-  inputs:
-    code:
-      src: ./src
+name: my-app
 
 website:
-  component: '@serverless/website@2.0.5'
+  component: @serverless/website
   inputs:
     code:
       src: ./src
-    env:
-      api: ${backend.url}
 ```
 
-Please note
+```shell
+$ serverless
+```
 
-
-
-
-
-
-You can use Components programmatically with a `serverless.js` file:
+You can also use Serverless Components with the Serverless Framework programatically via `serverless.js`:
 
 ```javascript
 
 MyComponent extends Component {
   async default() {
     const website = await this.load('@serverless/website') // Load a component
-    const outputs = await website({ code: './code' }) // Deploy it
+    const outputs = await website({ code: { src: './src' } }) // Deploy it
     this.state.url = outputs.url
     await this.save()
+    return outputs
   }
 }
+```
 
+```shell
+$ serverless
 ```
 
 You can also use Components declaratively with a `serverless.yml` file:
