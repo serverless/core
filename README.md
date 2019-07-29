@@ -10,9 +10,17 @@ Serverless Components are modules that provision and compose cloud services into
 
 You can use them with the [Serverless Framework](https://www.github.com/serverless/serverless).
 
-#
+- [Getting Started](#getting-started)
+- [Declarative Usage (`serverless.yml`)](#declarative-usage)
+- [Programatic Usage (`serverless.js`)](#programatic-usage)
+- [Components Registry](https://github.com/serverless-components/)
+- [Example Templates](./templates)
+- [Join Us on Slack](https://serverless.com/slack)
+- [Roadmap](https://github.com/serverless/components/projects/1)
 
-Use Serverless Components with the Serverless Framework declaratively via `serverless.yml`:
+# Getting Started
+
+Serverless Components can be added to the Serverless Framework's configuration file `serverless.yml`, like this:
 
 ```yaml
 name: my-app
@@ -47,15 +55,6 @@ MyComponent extends Component {
 $ serverless # Deploys the component...
 ```
 
-&nbsp;
-
-- [Getting Started](#getting-started)
-- [Programatic Usage (`serverless.js`)](#programatic-usage)
-- [Declarative Usage (`serverless.yml`)](#declarative-usage)
-- [Components Registry](https://github.com/serverless-components/)
-- [Example Templates](./templates)
-- [Join Us on Slack](https://serverless.com/slack)
-- [Roadmap](https://github.com/serverless/components/projects/1)
 
 
 &nbsp;
