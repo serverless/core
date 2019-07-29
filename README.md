@@ -79,7 +79,7 @@ MyComponent extends Component {
 
 Serverless Components favor cloud services with serverless qualities (shocker!) across all vendors, like AWS Lambda, AWS S3, Azure Functions, Google Big Query, Twilio, Stripe, Algolia, Cloudflare Workers and more.
 
-### Fast Deployments
+#### Fast Deployments
 
 Most Serverless Componetns deploy 10x faster than traditional cloud provisioning tools.  One of Serverless Components' goals is to deploy near instantly, removing the need to emulate clodu services locally.
 
