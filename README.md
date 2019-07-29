@@ -2,7 +2,7 @@
 
 [![Serverless Components (beta)](https://s3.amazonaws.com/assets.github.serverless/components/serverless-components-readme.gif)](http://serverless.com)
 
-<br/>
+<br/><br/>
 
 Serverless Components provision and compose cloud services into higher-level abstractions, like features and applications.   You can use them with the [Serverless Framework](https://www.github.com/serverless/serverless).
 
