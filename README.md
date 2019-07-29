@@ -12,8 +12,6 @@ You can use them with the [Serverless Framework](https://www.github.com/serverle
 
 <br/>
 
----
-
 - [Getting Started](#getting-started)
 - [Declarative Usage (`serverless.yml`)](#declarative-usage)
 - [Programatic Usage (`serverless.js`)](#programatic-usage)
