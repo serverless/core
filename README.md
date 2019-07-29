@@ -23,7 +23,7 @@ website:
 ```
 
 ```shell
-$ serverless
+$ serverless # Deploys the components...
 ```
 
 You can also use Serverless Components with the Serverless Framework programatically via `serverless.js`:
@@ -42,22 +42,7 @@ MyComponent extends Component {
 ```
 
 ```shell
-$ serverless
-```
-
-You can also use Components declaratively with a `serverless.yml` file:
-
-```yaml
-name: my-app
-
-website:
-  component: "@serverless/website"
-  inputs:
-    code: ./code
-```
-
-```shell
-$ components # Run this CLI command to deploy
+$ serverless # Deploys the component...
 ```
 
 &nbsp;
