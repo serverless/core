@@ -25,7 +25,7 @@ You can use them via the [Serverless Framework](https://www.github.com/serverles
 
 # Features
 
-#### Simplicity
+### Simplicity
 
 Serverless Components are mostly built around higher-order use-cases (e.g. a website, blog, payment system).  Irrelevant low-level infrastructure details are abstracted away, and simpler configuration is offered instead.
 
