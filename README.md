@@ -10,6 +10,8 @@ Serverless Components are modules that provision and compose cloud services into
 
 You can use them with the [Serverless Framework](https://www.github.com/serverless/serverless).
 
+<br/>
+
 ---
 
 - [Getting Started](#getting-started)
