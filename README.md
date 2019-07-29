@@ -12,6 +12,7 @@ You can use them with the [Serverless Framework](https://www.github.com/serverle
 
 <br/>
 
+- [Features](#features)
 - [Getting Started](#getting-started)
 - [Declarative Usage (`serverless.yml`)](#declarative-usage)
 - [Programatic Usage (`serverless.js`)](#programatic-usage)
@@ -74,9 +75,9 @@ MyComponent extends Component {
 }
 ```
 
-#### Serverless
+#### Serverless & Vendor-Agnostic
 
-Serverless Components favor cloud services with serverless qualities (shocker!), like AWS Lambda, AWS S3, Twilio, Stripe, Algolia, Cloudflare Workers and more.
+Serverless Components favor cloud services with serverless qualities (shocker!) across all vendors, like AWS Lambda, AWS S3, Azure Functions, Google Big Query, Twilio, Stripe, Algolia, Cloudflare Workers and more.
 
 #### Fast Deployments
 
