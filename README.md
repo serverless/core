@@ -30,6 +30,57 @@ Install the [Serverless Framework](https://www.github.com/serverless/serverless)
 $ npm i -g serverless
 ```
 
+Serverless Components can written by anyone, but you can see several available Components [here](https://www.github.com/serverless-components).
+
+# Declarative Usage
+
+If you want to compose components together and deploy them, you can do it declaratively via the Serverless Framework's `serverless.yml` file, like this:
+
+```yml
+name: my-stack
+
+website: # An instance of a component.
+  component: @serverless/website@2.0.5 # The component you want to create an instance of.
+  inputs: # Inputs to pass into the component.
+    code:
+      src: ./src
+```
+
+Deploy everything with:
+
+```shell
+$ serverless # Deploys the components...
+```
+
+# this property is identified as a component because it contains a component key
+myLambda:
+  component: "@serverless/aws-lambda" # the npm package name of the component that core would download and cache.
+
+  # inputs to be passed to the component.
+  # each component expects a different set of inputs.
+  # check the respective docs of each component.
+  inputs:
+    name: ${name}-${stage}-lambda      # you can reference any property above
+    region: ${region}                 # referencing the global region
+    env:
+      TABLE_NAME: ${comp:myTable.name} # you can also reference the outputs of another component in this file
+
+myTable:
+  component: "@serverless/aws-dynamodb@0.1.0" # you could point to a specific npm version
+  inputs:
+    name: ${name}-table
+    region: ${region}
+
+# you could also use point to a local component directory with a serverless.js file
+# very useful when developing & testing components
+localComponent:
+  component: "../my-component" # path to local component
+  inputs:
+    name: ${anything}-something
+```
+
+when you run `components` or `components remove` in the directory that contains the `serverless.yml` file, the core will set up a dependency graph based on your references and run the `default` function of each component in order. Only `default` and `remove` functions could be run when using `serverless.yml`. If you'd like to call a custom function of a component, use it programatically as explained above.
+
 You can use Serverless Components declaratively via the Framework's `serverless.yml` file like this:
 
 ```yaml
@@ -232,48 +283,6 @@ class MyComponent extends Component {
 Just run `components` in the directory that contains the `serverless.js` file to run your new component. You'll will see all the logs and outputs of your new components. Logs and outputs of any child component you use will not be shown, unless you run in verbose mode: `components --verbose`. You can also run any custom method/command you've defined with `components <methodName>`.
 
 For complete real-world examples on writing components, [check out our official components](https://github.com/serverless-components)
-
-## Declarative Usage
-
-If you want to compose some components together, without creating your own component, you can also do it declaratively, in YAML.
-
-Create a `serverless.yml` file that looks like this.
-
-
-```yml
-name: my-stack      # a unique name to be reused
-stage: dev          # a global stage to be reused
-region: us-east-2   # a global region to be reused
-anything: something # you can put any property here that could be reused.
-
-# this property is identified as a component because it contains a component key
-myLambda:
-  component: "@serverless/aws-lambda" # the npm package name of the component that core would download and cache.
-
-  # inputs to be passed to the component.
-  # each component expects a different set of inputs.
-  # check the respective docs of each component.
-  inputs:
-    name: ${name}-${stage}-lambda      # you can reference any property above
-    region: ${region}                 # referencing the global region
-    env:
-      TABLE_NAME: ${comp:myTable.name} # you can also reference the outputs of another component in this file
-
-myTable:
-  component: "@serverless/aws-dynamodb@0.1.0" # you could point to a specific npm version
-  inputs:
-    name: ${name}-table
-    region: ${region}
-
-# you could also use point to a local component directory with a serverless.js file
-# very useful when developing & testing components
-localComponent:
-  component: "../my-component" # path to local component
-  inputs:
-    name: ${anything}-something
-```
-
-when you run `components` or `components remove` in the directory that contains the `serverless.yml` file, the core will set up a dependency graph based on your references and run the `default` function of each component in order. Only `default` and `remove` functions could be run when using `serverless.yml`. If you'd like to call a custom function of a component, use it programatically as explained above.
 
 &nbsp;
 
