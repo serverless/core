@@ -22,6 +22,17 @@ You can use them with the [Serverless Framework](https://www.github.com/serverle
 
 <br/>
 
+# Features
+
+#### Simplicity
+
+Serverless Components can provision low-level infrastructure, but most are built around higher-order, common use-cases (e.g. a website, blog, payment system) where irrelevant low-level infrastructure details are abstracted away, offering minimal configuration.
+  
+#### Composition
+#### Serverless
+* **Fast Deployments**
+* **Vanilla Javascript**
+
 # Getting Started
 
 Install the [Serverless Framework](https://www.github.com/serverless/serverless).
