@@ -6,7 +6,7 @@ Serverless Components provision and compose cloud services into higher-level abs
 
 Serverless Components can be created by anyone.  [Serverless Inc.](https://www.serverless.com) currently makes and maintains several [which you can find here](https://www.github.com/serverless-components).
 
-<h4 align="center">Updates ⚡️ <a href="https://github.com/serverless/components/releases/tag/0.1.22">v0.1.22 has been released</a> - Includes the function & api provider agnostic components.</h4>
+**Updates** ⚡️ <a href="https://github.com/serverless/components/releases/tag/0.1.22">v0.1.22 has been released</a> - Includes the function & api provider agnostic components.
 
 ## Using Serverless Components
 
