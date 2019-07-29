@@ -6,9 +6,9 @@
 
 <br/>
 
-Serverless Components are modules that provision and compose cloud services into higher-level abstractions, like features and applications.  
+Forget infrastructure, Serverless Components enable you to create reusable use-cases out of cloud services, like user registration, a blog or a payment system.
 
-You can use them with the [Serverless Framework](https://www.github.com/serverless/serverless).
+You can use them via the [Serverless Framework](https://www.github.com/serverless/serverless).
 
 <br/>
 
