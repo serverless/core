@@ -25,7 +25,7 @@ You can use them via the [Serverless Framework](https://www.github.com/serverles
 
 # Features
 
-### Simplicity
+#### Simplicity
 
 Serverless Components are mostly built around higher-order use-cases (e.g. a website, blog, payment system).  Irrelevant low-level infrastructure details are abstracted away, and simpler configuration is offered instead.
 
@@ -39,7 +39,7 @@ website:
       src: ./src
 ```
   
-### Composition
+#### Composition
 
 Serverless Components are easy to compose.  You can compose them declaratively via YAML (**serverless.yml**) or programatically via javascript (**serverless.js**).
 
@@ -75,7 +75,7 @@ MyComponent extends Component {
 }
 ```
 
-### Serverless & Vendor-Agnostic
+#### Serverless & Vendor-Agnostic
 
 Serverless Components favor cloud services with serverless qualities (shocker!) across all vendors, like AWS Lambda, AWS S3, Azure Functions, Google Big Query, Twilio, Stripe, Algolia, Cloudflare Workers and more.
 
@@ -83,7 +83,7 @@ Serverless Components favor cloud services with serverless qualities (shocker!) 
 
 Most Serverless Componetns deploy 10x faster than traditional cloud provisioning tools.  One of Serverless Components' goals is to deploy near instantly, removing the need to emulate clodu services locally.
 
-### Vanilla Javascript
+#### Vanilla Javascript
 
 Serverless Components are written in vanilla javascript and seek to use the least amount of dependencies and fads, enabling ease of understanding by both beginning and fatigued javascripters.
 
