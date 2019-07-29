@@ -6,7 +6,7 @@
 
 <br/>
 
-Forget infrastructure, Serverless Components enable you to create reusable use-cases out of cloud services, like a blog, a user registration system, a payment system or an entire application.
+Forget infrastructure.  Serverless Components enable you to create reusable use-cases out of cloud services, like a blog, a user registration system, a payment system or an entire application.
 
 You can use them via the [Serverless Framework](https://www.github.com/serverless/serverless).
 
