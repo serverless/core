@@ -29,9 +29,11 @@ You can use them with the [Serverless Framework](https://www.github.com/serverle
 Serverless Components are mostly built around higher-order use-cases (e.g. a website, blog, payment system).  Irrelevant low-level infrastructure details are abstracted away, and simpler configuration is offered instead.
 
 ```yaml
-website: # An instance of a component.
-  component: @serverless/website@2.0.5 # The component you want to create an instance of.
-  inputs: # Inputs to pass into the component.
+# serverless.yml
+
+website:
+  component: @serverless/website@2.0.5
+  inputs:
     code:
       src: ./src
 ```
@@ -39,6 +41,19 @@ website: # An instance of a component.
 #### Composition
 
 Serverless Components are easy to compose.  You can compose them YAML (serverless.yml) or programatically (serverless.js).
+
+```javascript
+// serverless.js
+
+MyComponent extends Component {
+  async default() {
+    const website = await this.load('@serverless/website') // Load a component
+    const outputs = await website({ code: { src: './src' } }) // Deploy it
+    this.state.url = outputs.url
+    await this.save()
+    return outputs
+  }
+}
 
 #### Serverless
 * **Fast Deployments**
