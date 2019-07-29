@@ -6,7 +6,9 @@
 
 <br/>
 
-Serverless Components are modules that provision and compose cloud services into higher-level abstractions, like features and applications.  You can use them with the [Serverless Framework](https://www.github.com/serverless/serverless).
+Serverless Components are modules that provision and compose cloud services into higher-level abstractions, like features and applications.  
+
+You can use them with the [Serverless Framework](https://www.github.com/serverless/serverless).
 
 <br/>
 
@@ -28,7 +30,7 @@ Install the [Serverless Framework](https://www.github.com/serverless/serverless)
 $ npm i -g serverless
 ```
 
-Serverless Components can written by anyone, but you can see several available Components [here](https://www.github.com/serverless-components).
+Serverless Components can written by anyone, but you can see several [available Components here](https://www.github.com/serverless-components).
 
 # Declarative Usage
 
