@@ -24,6 +24,12 @@ You can use them with the [Serverless Framework](https://www.github.com/serverle
 
 # Getting Started
 
+Install the [Serverless Framework](https://www.github.com/serverless/serverless).
+
+```shell
+$ npm i -g serverless
+```
+
 Serverless Components can be added to the Serverless Framework's configuration file `serverless.yml`, like this:
 
 ```yaml
