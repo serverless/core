@@ -3,7 +3,7 @@
  */
 
 const getVotes = async () => {
-  console.log('here')
+
   let data = await fetch(window.env.apiUrl + '/v1/votes')
   data = await data.json()
 

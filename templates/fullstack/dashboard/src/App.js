@@ -19,6 +19,17 @@ export default class App extends Component {
 
   async componentDidMount() {
     const self = this
+    await self.getVotes()
+    setInterval(async () => {
+      await self.getVotes()
+    }, 3000)
+  }
+
+  /**
+   * Get Votes
+   */
+
+  async getVotes() {
     const votes = await lib.getVotes()
     this.setState({ votes: votes.votes })
   }
