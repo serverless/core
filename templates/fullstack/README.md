@@ -1,8 +1,8 @@
 # Serverless Fullstack
 
-**Demo:** [ServerlessFullstack.com](https://serverless-fullstack.com/)
-
 A fullstack application built on Serverless Components via the Serverless Framework
+
+**Demo:** [ServerlessFullstack.com](https://serverless-fullstack.com/)
 
 ## Quick-Start
 
