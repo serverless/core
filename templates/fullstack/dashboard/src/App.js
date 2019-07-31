@@ -20,9 +20,6 @@ export default class App extends Component {
   async componentDidMount() {
     const self = this
     await self.getVotes()
-    setInterval(async () => {
-      await self.getVotes()
-    }, 3000)
   }
 
   /**
@@ -30,8 +27,14 @@ export default class App extends Component {
    */
 
   async getVotes() {
+    const self = this
+    if (self.timer) clearInterval(self.timer)
     const votes = await lib.getVotes()
-    this.setState({ votes: votes.votes })
+    self.setState({ votes: votes.votes || 0 }, () => {
+      self.timer = setInterval(async () => {
+        await self.getVotes()
+      }, 3000)
+    })
   }
 
   /**
