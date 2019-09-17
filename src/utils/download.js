@@ -79,7 +79,21 @@ async function download(componentsToDownload) {
   const componentsPathsMap = {}
 
   const promises = componentsToDownload.map(async (component) => {
-    const componentVersionToInstall = await getComponentVersionToDownload(component)
+    let componentVersionToInstall
+    try {
+      componentVersionToInstall = await getComponentVersionToDownload(component)
+    } catch (e) {
+      /*
+       * In case the requested component is not found in the registry, try resolving the component locally.
+       * This is needed in case of:
+       * - a local component package that is not published to the registry (often found in a monorepo; a package can also be set to `private` and will never be published)
+       * - a component path was given as an absolute path, eg: /Users/username/some/folder/my-component
+       */
+      require.resolve(component)
+      // `require.resolve` throws an error if module does not exist, so if we got here - we have our component.
+      componentsPathsMap[component] = component
+      return
+    }
 
     const npmInstallPath = path.join(localRegistryPath, componentVersionToInstall.pair)
     const requirePath = path.join(npmInstallPath, 'node_modules', componentVersionToInstall.name)
