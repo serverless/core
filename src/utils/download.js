@@ -89,10 +89,15 @@ async function download(componentsToDownload) {
        * - a local component package that is not published to the registry (often found in a monorepo; a package can also be set to `private` and will never be published)
        * - a component path was given as an absolute path, eg: /Users/username/some/folder/my-component
        */
-      require.resolve(component)
-      // `require.resolve` throws an error if module does not exist, so if we got here - we have our component.
-      componentsPathsMap[component] = component
-      return
+      try {
+        require.resolve(component)
+        componentsPathsMap[component] = component
+        return
+      } catch (re) {
+        throw Error(
+          `Component "${component}" was not found on NPM nor could it be resolved locally.`
+        )
+      }
     }
 
     const npmInstallPath = path.join(localRegistryPath, componentVersionToInstall.pair)
