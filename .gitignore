@@ -17,6 +17,7 @@ dist
 .idea
 build/
 .env*
+.cache*
 env.js
 tmp
 package-lock.json
