@@ -1,14 +1,3 @@
-# Components Core
+# Transfer Notice
+This repo is inactive and has been transfered to [the serverless/components repo](https://github.com/serverless/components)
 
-## load()
-Downloads a component from npm if it doesn't exist in local cache, and initialize it with a programatic context.
-```js
-const { utils } = require('@serverless/core')
-
-const context = {
-  stateRoot: 'path/to/state/dir', // default is ~/.serverless/components/state
-  credentials : { aws: {} } // default is empty object
-}
-
-const component = await utils.load('@serverless/mono', 'uniqueId', context)
-```
